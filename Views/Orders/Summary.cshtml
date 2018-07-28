@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top:2em">
+    <table>
+        <tr>
+            <td width="300px">
+                <input id="serachUser" type="text" placeholder="Custeromer Name" class="form-control" />
+            </td>
+            <td>
+                <input id="Button1" type="button" value="Get Orders" onclick="searchUser()" class="btn btn-success" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    function searchUser() {
+        var user = document.getElementById("serachUser").value;
+        window.location = '/orders/' + user;
+    }
+</script>

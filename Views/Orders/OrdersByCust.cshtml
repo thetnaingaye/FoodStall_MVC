@@ -1,0 +1,76 @@
+﻿@using FoodStall_MVC.Models
+
+@{
+    ViewBag.Title = "OrdersByCust";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top:2em">
+    <table>
+        <tr>
+            <td width="300px">
+                <input id="serachUser" type="text" placeholder="Custeromer Name" class="form-control" />
+            </td>
+            <td>
+                <input id="Button1" type="button" value="Get Orders" onclick="searchUser()" class="btn btn-success" />
+            </td>
+        </tr>
+    </table>
+  
+
+
+    @{ List<Order> orders = (List<Order>)ViewBag.orders;}
+    @if (orders.Count != 0)
+    {
+        <h2>Orders By : @orders[0].UserName</h2>
+
+    }
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <td>Order Id</td>
+                <td>Food</td>
+                <td>Size</td>
+                <td>Chilli</td>
+                <td>MoreSalt</td>
+                <td>Pepper</td>
+                <td>Cancel</td>
+            </tr>
+        </thead>
+        @foreach (var o in orders)
+        {
+            <tr>
+                <td>@o.OrderId</td>
+                <td>@BizLogic.GetFoodName(o.FoodID)</td>
+                <td>
+
+                    @{string strSize;  }
+                    @if (o.Size == 1)
+                {
+                    strSize = "Small";
+                }
+                else if (o.Size == 2)
+                {
+                    strSize = "Medium";
+                }
+                else
+                {
+                    strSize = "Large";
+                }
+                    @strSize
+                </td>
+                <td>@o.Chilli</td>
+                <td>@o.MoreSalt</td>
+                <td>@o.Pepper</td>
+                <td><a href="~/orders/delete/@o.OrderId">cancel</a></td>
+            </tr>
+                        }
+    </table>
+</div>
+<script>
+    function searchUser() {
+        var user = document.getElementById("serachUser").value;
+        window.location = '/orders/' + user;
+    }
+</script>

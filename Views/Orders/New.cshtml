@@ -1,0 +1,54 @@
+﻿@model FoodStall_MVC.ViewModels.OrderFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-primary">New Order</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post,new { @action = "./save" }))
+{
+    <table class="table">
+        <tr>
+            <td>@Html.LabelFor(o => o.Order.UserName)</td>
+            <td>@Html.TextBoxFor(o => o.Order.UserName,new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Order.FoodID)</td>
+            <td>@Html.DropDownListFor(o => o.Order.FoodID, new SelectList(Model.FoodLists, "FoodID", "FoodName"), new { @class = "form-control" })</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Order.Size)</td>
+            <td>
+                <p>@Html.RadioButtonFor(o => o.Order.Size, 1, new { @checked = true }) Small</p>
+                <p>@Html.RadioButtonFor(o => o.Order.Size, 2) Medium</p>
+                <p>@Html.RadioButtonFor(o => o.Order.Size, 3) Large</p>
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Order.Chilli)</td>
+            <td>
+                @Html.CheckBoxFor(o => o.Order.Chilli)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Order.MoreSalt)</td>
+            <td>
+                @Html.CheckBoxFor(o => o.Order.MoreSalt)
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(o => o.Order.Pepper)</td>
+            <td>
+                @Html.CheckBoxFor(o => o.Order.Pepper)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary">Make Order</button>
+            </td>
+        </tr>
+    </table>
+  
+
+}
