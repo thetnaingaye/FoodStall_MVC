@@ -16,7 +16,7 @@ namespace FoodStall_MVC.Controllers
             return View();
         }
 
-        [Route("orders/new")]
+        [Route("~/orders/new")]
         public ActionResult New()
         {
 
@@ -46,7 +46,7 @@ namespace FoodStall_MVC.Controllers
         }
 
 
-        [Route("orders/{custName}")]
+        [Route("~/orders/{custName}")]
         public ActionResult OrdersByCust(string custName)
         {
 
