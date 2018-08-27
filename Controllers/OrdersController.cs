@@ -34,6 +34,8 @@ namespace FoodStall_MVC.Controllers
         [Route("orders/save")]
         public ActionResult Save(OrderFormViewModel orderformViewModel)
         {
+
+            int orderid = orderformViewModel.Order.OrderId ;
             string custName = orderformViewModel.Order.UserName;
             int foodId = orderformViewModel.Order.FoodID;
             int size = orderformViewModel.Order.Size;
@@ -41,7 +43,15 @@ namespace FoodStall_MVC.Controllers
             string moresalt = orderformViewModel.Order.MoreSalt ? "Y" : "N";
             string pepper = orderformViewModel.Order.Pepper ? "Y" : "N";
 
-            BizLogic.MakeOrder(custName, foodId, size, chilli, moresalt, pepper);
+            if (orderid== 0)
+            {
+                BizLogic.MakeOrder(custName, foodId, size, chilli, moresalt, pepper);
+            }else
+            {
+                BizLogic.UpdateOrder(orderid,custName, foodId, size, chilli, moresalt, pepper);
+            }
+
+
             return Redirect("~/orders/" + custName);
         }
 
@@ -63,6 +73,30 @@ namespace FoodStall_MVC.Controllers
             return Redirect("~/orders/" + o.UserName);
         }
 
+
+        [Route("orders/Edit/{orderid}")]
+        public ActionResult EditOrder(int orderid)
+        {
+            Order o = BizLogic.GetOrderbyOrderID(orderid);
+            Order_View ov = new Order_View();
+            ov.OrderId = o.OrderId;
+            ov.UserName = o.UserName;
+            ov.FoodID = o.FoodID;
+            ov.Size = o.Size;
+            ov.Chilli = o.Chilli == "Y";
+            ov.MoreSalt = o.MoreSalt == "Y";
+            ov.Pepper = o.Pepper == "Y";
+            var foodLists = BizLogic.GetFoodList();
+            var orderViewModel = new ViewModels.OrderFormViewModel
+            {
+                Order = ov,
+                FoodLists = foodLists
+
+            };
+
+            return View("New", orderViewModel);
+            
+        }
         [Route("orders/summary")]
         public ActionResult Summary()
         {

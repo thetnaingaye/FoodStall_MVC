@@ -80,3 +80,9 @@ C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStal
 C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\obj\Debug\FoodStall_MVC.csprojResolveAssemblyReference.cache
 C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\obj\Debug\FoodStall_MVC.dll
 C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\obj\Debug\FoodStall_MVC.pdb
+C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\bin\System.Net.Http.Formatting.dll
+C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\bin\System.Web.Http.dll
+C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\bin\System.Web.Http.WebHost.dll
+C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\bin\System.Net.Http.Formatting.xml
+C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\bin\System.Web.Http.xml
+C:\Users\mmu1t\Documents\Visual Studio 2015\Projects\Demo\FoodStall_MVC\FoodStall_MVC\bin\System.Web.Http.WebHost.xml

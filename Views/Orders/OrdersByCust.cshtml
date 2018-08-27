@@ -35,6 +35,7 @@
                 <td>Chilli</td>
                 <td>MoreSalt</td>
                 <td>Pepper</td>
+                <td>Update</td>
                 <td>Cancel</td>
             </tr>
         </thead>
@@ -63,7 +64,9 @@
                 <td>@o.Chilli</td>
                 <td>@o.MoreSalt</td>
                 <td>@o.Pepper</td>
+                <td><a href="~/orders/Edit/@o.OrderId">Update</a></td>
                 <td><a href="~/orders/delete/@o.OrderId">cancel</a></td>
+
             </tr>
                         }
     </table>

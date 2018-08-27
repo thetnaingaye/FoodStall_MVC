@@ -1,16 +1,24 @@
 ﻿@model FoodStall_MVC.ViewModels.OrderFormViewModel
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "Order Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-primary">New Order</h2>
-@using (Html.BeginForm(null, null, FormMethod.Post,new { @action = "./save" }))
+<h2 class="text-primary">Place Your Order</h2>
+@using (Html.BeginForm("save", "orders"))
 {
     <table class="table">
         <tr>
             <td>@Html.LabelFor(o => o.Order.UserName)</td>
-            <td>@Html.TextBoxFor(o => o.Order.UserName,new { @class = "form-control" })</td>
+            @if (Model.Order.OrderId != 0)
+            {
+                <td>@Html.TextBoxFor(o => o.Order.UserName, new { @class = "form-control", @readonly = "true" })</td>
+
+            }
+            else
+            {
+                <td>@Html.TextBoxFor(o => o.Order.UserName, new { @class = "form-control" })</td>
+            }
         </tr>
         <tr>
             <td>@Html.LabelFor(o => o.Order.FoodID)</td>
@@ -45,10 +53,11 @@
         <tr>
             <td></td>
             <td>
-                <button type="submit" class="btn btn-primary">Make Order</button>
+                @Html.HiddenFor(o => o.Order.OrderId)
+                <button type="submit" class="btn btn-primary">Order</button>
             </td>
         </tr>
     </table>
-  
+
 
 }

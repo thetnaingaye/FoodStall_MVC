@@ -14,6 +14,7 @@ namespace FoodStall_MVC.Models
                 return so.Foods.ToList();
             }
         }
+
         public static int GetFoodID(string foodname)
         {
             using (ShopOrders so = new ShopOrders())
@@ -21,6 +22,15 @@ namespace FoodStall_MVC.Models
                 return so.Foods.Where(f => f.FoodName == foodname).Select(s => s.FoodID).First();
             }
         }
+
+        internal static List<Order> GetOrders()
+        {
+            using (ShopOrders so = new ShopOrders())
+            {
+                return so.Orders.ToList();
+            }
+        }
+
         public static string GetFoodName(int foodID)
         {
             using (ShopOrders so = new ShopOrders())
@@ -73,17 +83,17 @@ namespace FoodStall_MVC.Models
             }
 
         }
-        public static void UpdateOrder(Order od)
+        public static void UpdateOrder(int orderid,string custname, int foodid, int size, string chilli, string moresalt, string pepper)
         {
             using (ShopOrders so = new ShopOrders())
             {
-                Order orderUpdate = so.Orders.Where(o => o.OrderId == od.OrderId).ToList().FirstOrDefault();
-                orderUpdate.UserName = od.UserName;
-                orderUpdate.FoodID = od.FoodID;
-                orderUpdate.Size = od.Size;
-                orderUpdate.Chilli = od.Chilli;
-                orderUpdate.MoreSalt = od.MoreSalt;
-                orderUpdate.Pepper = orderUpdate.Pepper;
+                Order orderUpdate = so.Orders.Where(o => o.OrderId == orderid).ToList().FirstOrDefault();
+               // orderUpdate.UserName = custname;
+                orderUpdate.FoodID = foodid;
+                orderUpdate.Size = size;
+                orderUpdate.Chilli = chilli;
+                orderUpdate.MoreSalt = moresalt;
+                orderUpdate.Pepper = pepper;
                 //so.Orders.AddOrUpdate(od);
                 so.SaveChanges();
             }

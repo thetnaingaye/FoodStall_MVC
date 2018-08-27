@@ -10,7 +10,7 @@ namespace FoodStall_MVC.Controllers
     {
         public ActionResult Index()
         {
-            return Redirect("orders/new");
+            return Redirect("~/orders/new");
         }
 
         public ActionResult About()
